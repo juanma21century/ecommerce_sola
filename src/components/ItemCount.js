@@ -27,15 +27,22 @@ const ItemCount = (props) => {
 
     return (
         
-        <div className="align-items-center d-flex justify-content-center">
-            <button className="btn-danger btn-lg" onClick={()=> decrementarCounter() }>
-                - 
-            </button>
-            <h1 className="mb" >Cantidad : {counter} </h1>
-            <button className="btn-danger btn-lg" onClick={()=> incrementarCounter() }>
-                +
-            </button>
+        <div>
+            <div className="align-items-center d-flex justify-content-center">
+                <button className="btn-primary btn-lg" onClick={()=> decrementarCounter() }>
+                    - 
+                </button>
+                <h1 className="mb px-5" >{counter} </h1>
+                <button className="btn-primary btn-lg" onClick={()=> incrementarCounter() }>
+                    +
+                </button>
                 
+
+            </div>
+            <div className="d-flex align-items-center justify-content-center">
+                <button className=" btn-primary btn-sm col-2">Agregar al carrito</button>
+            </div>
+            
             
         </div>
     )
