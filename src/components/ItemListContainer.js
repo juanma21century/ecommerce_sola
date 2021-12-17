@@ -1,25 +1,32 @@
 import React from 'react'
-import Item from './Item'
-import ItemCount from './ItemCount';
+// import ItemCount from './ItemCount';
+import ItemList from './ItemList';
+import Products from './Products';
+import { useState, useEffect } from 'react';
 
-
-
-const productos = [
-    {nombre: "Mother Board", precio: 15000, descripcion: "Mother board as2560", img: '../images/productos/motherboard.jpg' },
-    {nombre: "Mother Board2", precio: 15000, descripcion: "Mother board as2560", img: '../images/motherboard.jpg' },
-    {nombre: "Mother Board3", precio: 15000, descripcion: "Mother board as2560", img: "./images/motherboard.jpg"},
-    {nombre: "Mother Board4", precio: 15000, descripcion: "Mother board as2560", img: "./images/motherboard.jpg"},
-    {nombre: "Mother Board5", precio: 15000, descripcion: "Mother board as2560", img: "./images/motherboard.jpg"}
-    ];
 
 const ItemListContainer = () => {
 
-    return (
-        <div>
-            <ItemCount stock = {4} initial = {1} />
-            {/* {productos.map((producto, indice) => <Item key={indice} imagen = {producto.img} nombre = {producto.nombre} precio = {producto.precio} descripcion = {producto.descripcion}  />)} */}
-             
+    const [productos, setProductos] = useState([]);
 
+    
+    useEffect(()=> {
+        const promesa = new Promise((res,rej)=> {
+            setTimeout(() => {
+                res(setProductos(Products))
+            }, 2000);
+        });
+
+        promesa
+        .then("success")
+        .catch("error");
+    })
+
+    
+    return (
+        <div className="mt-4">
+            <h1 className="text-center mb-4 text-primary"> CATALOGO</h1>
+            <ItemList productos = {productos} />
         </div>
     )
 }

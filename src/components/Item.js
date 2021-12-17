@@ -1,14 +1,21 @@
-const Item = (productos) => {
+import { Card } from "react-bootstrap"
+import { Button } from "react-bootstrap"
+
+const Item = (producto) => {
 
     return (
-        <div className="card" style="width: 18rem;">
-            <img src={productos.imagen} className="card-img-top" alt="..."/>
-            <div className="card-body">
-                <h5 className="card-title">{productos.nombre}</h5>
-                <p className="card-text">{productos.descripcion}</p>
-                <p className="card-text">{productos.precio}</p>
-                <a href="" className="btn btn-primary">Detalle producto</a>
-            </div>
+        <div  className="mb-4" >
+            <Card className="d-flex align-items-center" style={{ width: '18rem' }}>
+                <Card.Title className="text-center"> {producto.nombre} </Card.Title>
+                <Card.Img variant="top" src= {producto.imagen} />
+                <Card.Body>
+                    
+                    <Card.Text className="text-center">
+                    $ {producto.precio}
+                    </Card.Text>
+                    <Button  variant="primary">Detalle producto</Button>
+                </Card.Body>
+            </Card>
         </div>
     )
 }
