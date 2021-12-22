@@ -1,12 +1,21 @@
 import React from 'react'
+import { Card, Button } from 'react-bootstrap'
 
-const ItemDetail = (lista) => {
 
-    console.log(lista);
+const ItemDetail = (productos) => {
+
     return (
-        <div>
-            <h1> {lista.lista.map(e=> e.primero)} </h1>
-        </div>
+
+        <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src= {productos.productos[1].imagen} />
+        <Card.Body>
+            <Card.Title>{productos.productos[1].nombre}</Card.Title>
+            <Card.Text>
+            {productos.productos[1].descripcion}
+            </Card.Text>
+            <Button variant="primary">Agregar al Carrito</Button>
+        </Card.Body>
+        </Card>
     )
 }
 

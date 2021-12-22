@@ -1,15 +1,33 @@
 import React from 'react'
 import ItemDetail from './ItemDetail'
+import Products from './Products'
+import { useEffect, useState } from 'react'
+
 
 const ItemDetailContainer = () => {
+    
+    const [productos, setProductos] = useState([]);
 
-    const lista = [{primero:2},{segundo:2},{tercero:3}];
+    useEffect(()=> {
+        const promesa = new Promise((res,rej)=> {
+            setTimeout(() => {
+                res(setProductos(Products))
+            }, 2000);
+        });
 
-    return (
-        <div>
-            <ItemDetail lista = {lista} />
-        </div>
-    )
+        promesa
+        .then("success")
+        .catch("error");
+    })
+
+        return (
+            <div>
+                   <ItemDetail productos = {Products} />
+            </div>
+        )
+ 
+
+    
 }
 
 export default ItemDetailContainer
