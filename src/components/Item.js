@@ -6,7 +6,7 @@ const Item = (producto) => {
 
     return (
         <div  className="mb-4" >
-            <Card className="d-flex align-items-center" style={{ width: '18rem' }}>
+            <Card className="d-flex align-items-center" style={{ width: '19rem' }}>
                 <Card.Title className="text-center"> {producto.nombre} </Card.Title>
                 <Card.Img className="card-img" variant="top" src= {producto.imagen} />
                 <Card.Body>

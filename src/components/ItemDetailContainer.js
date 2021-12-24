@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react'
 
 
 const ItemDetailContainer = () => {
-    
+
     const [productos, setProductos] = useState([]);
 
+    
     useEffect(()=> {
         const promesa = new Promise((res,rej)=> {
             setTimeout(() => {
@@ -16,18 +17,18 @@ const ItemDetailContainer = () => {
         });
 
         promesa
-        .then("success")
+        .then("datos cargados con exito")
         .catch("error");
     })
 
-        return (
-            <div>
-                   <ItemDetail productos = {Products} />
-            </div>
-        )
- 
 
     
+        return (
+            <div>
+                   <ItemDetail  />
+            </div>
+        )
+
 }
 
 export default ItemDetailContainer

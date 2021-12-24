@@ -3,12 +3,16 @@ import React from 'react'
 import ItemList from './ItemList';
 import Products from './Products';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 
 const ItemListContainer = () => {
 
     const [productos, setProductos] = useState([]);
 
+    const {id} = useParams()
+
+    console.log(id);
     
     useEffect(()=> {
         const promesa = new Promise((res,rej)=> {
@@ -18,9 +22,10 @@ const ItemListContainer = () => {
         });
 
         promesa
-        .then("success")
+        .then("datos cargados con exito")
         .catch("error");
     })
+
 
     
     return (
