@@ -10,9 +10,6 @@ const ItemListContainer = () => {
 
     const [productos, setProductos] = useState([]);
 
-    const {id} = useParams()
-
-    console.log(id);
     
     useEffect(()=> {
         const promesa = new Promise((res,rej)=> {
@@ -32,6 +29,7 @@ const ItemListContainer = () => {
         <div className="mt-4">
             <h1 className="text-center mb-4 text-primary"> CATALOGO</h1>
             <ItemList productos = {productos} />
+            
         </div>
     )
 }
