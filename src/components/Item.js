@@ -1,9 +1,8 @@
 import { Card } from "react-bootstrap"
-import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './styles.css'
 
-const Item = (producto) => {
+const Item = ({producto}) => {
 
 
     return ( 

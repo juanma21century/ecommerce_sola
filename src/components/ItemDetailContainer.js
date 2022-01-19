@@ -1,45 +1,40 @@
 import React from 'react'
-import ItemDetail from './ItemDetail'
-import Products from './Products'
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import ItemDetail from "./ItemDetail"
+import { data } from "./firebase"
+import { collection, getDoc, doc } from "firebase/firestore"
 
 const ItemDetailContainer = () => {
 
-        const [product, setProduct] = useState([]);
-        const {id} = useParams()
+    const [item, setItem] = useState({});
+    const { id } = useParams();
 
+    useEffect(() => {
 
-        useEffect(()=> {
-                const promesa = new Promise((res,rej)=> {
-                    setTimeout(() => {
-                        res(setProduct(Products))
-                    }, 2000);
-                });
-        
-                promesa
-                .then("datos cargados con exito")
-                .catch("error");
+        const itemsCollection = collection(data, "productos");
+        const consultaDoc = doc(itemsCollection, id);
+
+        getDoc(consultaDoc)
+            .then((res) => {
+                setItem(res.data());
+            })
+            .catch((error) => {
+                console.log(error);
             })
 
-            function filterData(){
-                    const filteredProducts = product.filter((product)=> 
-                    product.id ==(id)
-                );
-                return filteredProducts;
-            }
+    }, [id]);
 
-            const result = filterData(product)
-
-        console.log(result);
-
-        return (
-            <div>
-                    <ItemDetail product = {result} />
+    return (
+        <>
+        {item !== {} ? (
+            <div className="container d-flex justify-content-center">
+                <ItemDetail producto={item} />
             </div>
-        )
-
+        ) : 
+            <h1 className='text-center'>Cargando...</h1>}
+        </>
+    )
 }
 
 export default ItemDetailContainer

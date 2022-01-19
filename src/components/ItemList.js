@@ -1,22 +1,15 @@
 import React from 'react'
 import Item from './Item'
-import {Link, NavLink} from 'react'
 
-const ItemList = (productos) => {
-
+const ItemList = ({productos}) => {
 
     return (
-        <>
-        {productos.productos.length === 0 ?(
-            <h1 className='text-center'>Loading...</h1>
-        ):
-        (<div className="d-flex flex-wrap justify-content-around mt-4 ml-3">
-            {productos.productos.map((producto,key)=> <Item id = {producto.id} nombre = {producto.nombre} precio = {producto.precio} imagen = {producto.imagen}  />)}  
-        </div>)
-        }
-        </>
-        
-    )
+            <div className="row row-cols-1 row-cols-md-3 g-4 grupoCards">
+            {productos.map((producto) => {
+                return <Item key={producto.id} producto={producto}/>;
+            })} 
+            </div>
+    );
 }
 
-export default ItemList
+export default ItemList;

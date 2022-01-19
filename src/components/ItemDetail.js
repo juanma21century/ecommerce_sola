@@ -1,46 +1,33 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import Item from './Item'
 import ItemCount from './ItemCount'
+import { useContexto } from './CartContext'
+import { Card } from 'react-bootstrap'
 
-const ItemDetail = ({product}) => {
+const ItemDetail = ({producto}) => {
 
-  console.log(product);
+  const { addItem } = useContexto();
 
-  const onAdd = (cantidad) => {
-    console.log("Se agregaron " +  cantidad + " items");
+  const mostrarCantidad = (cantidad) => {
+      addItem(producto, cantidad);
   }
 
+  
   return (
-    <>
-      {product &&
-        product.map((product) => (
-          <div className='d-flex justify-content-center mt-4'>
-            <Card className="d-flex align-items-center" style={{ width: '19rem' }}>
-              <Card.Title className="text-center"> Detalle Item </Card.Title>
-              
-              <Card.Img className="card-img" variant="top" src= {product.imagen} />
-              <Card.Title className="text-center"> {product.nombre} </Card.Title>
-              <Card.Body>
-                  
-                  <Card.Text className="text-center">
-                  $ {product.precio}
-                  </Card.Text>
-                  <Card.Text className="text-center">
-                  {product.descripcion}
-                  </Card.Text>
-                  {/* <Link to = {"item/" + product.id} className="btn btn-danger" > Agregar al carrito </Link> */}
-                  <Card.Text className="text-center">
-                  {<ItemCount initial={0} stock={5} onAdd = {onAdd} />}
-                  </Card.Text>
-              </Card.Body>
-            </Card>
-      </div>
-                
-        ))}
-    </>
-  );
+    <Card className="d-flex align-items-center mt-2" style={{ width: '22rem' }}>
+    <Card.Title className="text-center"> {producto.nombre} </Card.Title>
+    <Card.Img className="card-img" variant="top" src= {producto.imagen} />
+    <Card.Body>
+        <Card.Text>
+          {producto.descripcion}
+        </Card.Text>
+        <Card.Text className="text-center font-weight-bold">
+        $ {producto.precio}
+        </Card.Text>
+        
+        <ItemCount initial={1} onAdd={mostrarCantidad}/>
+    </Card.Body>
+    </Card>
+  )
 }
 
 export default ItemDetail
