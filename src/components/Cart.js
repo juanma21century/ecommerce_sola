@@ -31,7 +31,6 @@ const Carrito = () => {
                         return (
                             
                         <tr>
-                            {/* {key={producto.id}} */}
                             <td className="text-uppercase">{producto.nombre}</td>
                             <td>{producto.cantidad}</td>
                             <td>${producto.precio}</td>
@@ -45,11 +44,11 @@ const Carrito = () => {
             <div className="row">
                     <p className="text-center">Total: ${total}</p>
             </div>
-            </div>) : <p>El Carrito esta VACIO</p>}
+            </div>) : <p className='text-center display-4 text-success'>El Carrito esta VACIO</p>}
             
             <div className='text-center'>
-                <button className="btn btn-danger mt-5" onClick={finalizarCompra}>Finalizar compra</button>
-                <button className="btn btn-danger mt-5 me-3" onClick={clearCart}>Vaciar carrito</button>
+                <button className="btn btn-danger mt-5 me-3" onClick={finalizarCompra}>Finalizar compra</button>
+                <button className="btn btn-danger mt-5" onClick={clearCart}>Vaciar carrito</button>
             </div>
         </div>
     )

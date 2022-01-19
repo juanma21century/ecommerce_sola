@@ -20,7 +20,7 @@ const ItemDetail = ({producto}) => {
         <Card.Text>
           {producto.descripcion}
         </Card.Text>
-        <Card.Text className="text-center font-weight-bold">
+        <Card.Text className="text-center font-weight-bold display-6">
         $ {producto.precio}
         </Card.Text>
         
