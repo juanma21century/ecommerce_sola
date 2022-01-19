@@ -43,11 +43,11 @@ const Carrito = () => {
                 </tbody>
             </table> 
             <div className="row">
-                    <p className="display-6 text-center">Total: ${total}</p>
+                    <p className="text-center">Total: ${total}</p>
             </div>
             </div>) : <p>El Carrito esta VACIO</p>}
             
-            <div>
+            <div className='text-center'>
                 <button className="btn btn-danger mt-5" onClick={finalizarCompra}>Finalizar compra</button>
                 <button className="btn btn-danger mt-5 me-3" onClick={clearCart}>Vaciar carrito</button>
             </div>
