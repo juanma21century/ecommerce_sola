@@ -1,12 +1,29 @@
 import { useContexto } from './CartContext'
+import { addDoc , collection } from 'firebase/firestore'
+import { data } from './firebase'
 
 
 const Carrito = () => {
 
-    const { carrito, removeItem, clearCart } = useContexto()
+    const { carrito, removeItem, clearCart, cantidadTotal } = useContexto()
 
     const finalizarCompra = () => {
-        clearCart();
+        
+        const ventasCollection = collection(data, "ventas")
+        addDoc(ventasCollection, {
+            comprador : {
+                nombre : "Homero",
+                apellido : "Simpson",
+                email : "homero@gmail.com"
+            },
+            items : carrito,
+            total : cantidadTotal
+        } )
+        .then((resultado)=> {
+            console.log(resultado.items);
+            clearCart();
+        })
+        
     }
 
     let total = 0;

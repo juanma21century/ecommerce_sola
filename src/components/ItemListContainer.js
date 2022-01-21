@@ -9,15 +9,15 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
-    const { params } = useParams();
+    const { categoria } = useParams();
 
     useEffect(() => {
 
         const itemsCollection = collection(data, "productos"); 
 
-        if (params) {
+        if (categoria) {
 
-            const consulta = query(itemsCollection, where("params", "==", params));
+            const consulta = query(itemsCollection, where("categoria", "==", categoria));
 
             getDocs(consulta)
             .then(({ docs }) => {
@@ -38,7 +38,7 @@ const ItemListContainer = () => {
             }) 
         }
 
-    }, [params])
+    }, [categoria])
 
     
     return (
